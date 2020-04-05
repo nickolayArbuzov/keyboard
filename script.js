@@ -55,7 +55,7 @@ for (let i=0; i<5; i++){
         d.querySelectorAll('div')[index].style.top = `${(d.documentElement.clientHeight/2 - d.documentElement.clientHeight/2.5 + 60*5)+60*i}px`;
         d.querySelectorAll('div')[index].style.left = `${(d.documentElement.clientWidth-60*15)/2+60*j}px`;
         d.querySelectorAll('div')[index].style.textAlign = 'center';
-
+        d.querySelectorAll('div')[index].style.cursor = 'pointer';
         if(state.language == 'en'){
             if(index<13 || index==28){
                 d.querySelectorAll('div')[index].innerHTML=`${en[index][0]}<sup>${en[index][1]}`;
