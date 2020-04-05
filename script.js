@@ -1,7 +1,7 @@
 let d=document;
 
 let state = {
-    language: 'ru',
+    language: 'en',
     capsLock: false,
     shift: false,
     ctrl: false,
@@ -23,14 +23,14 @@ textArea.style.left = `${(d.documentElement.clientWidth-61*13)/2}px`;
 let en = [
           ["`","~"],["1","!"],["2","@"],["3","#"],["4","$"],["5","%"],["6","^"],["7","&"],["8","*"],["9","("],["0",")"],
           ["-","_"],["=","+"],"Backspace","","Tab","Q","W","E","R","T","Y","U","I","O","P","[","]",["\\","|"],"DEL",
-          "Caps Lock","","A","S","D","F","G","H","J","K","L",";","'","ENTER","","Shift","","\\","Z","X","C","V","B","N","M",",",".","/","^",
+          "Caps Lock","","A","S","D","F","G","H","J","K","L",";","'","ENTER","","Shift","",`${state.language}`,"Z","X","C","V","B","N","M",",",".","/","^",
           "Shift","Ctrl","Win","Alt","","","","","","","","Alt","Ctrl","<","Down",">"
         ]
           
 let ru = [
           "Ё",["1","!"],["2",'"'],["3","№"],["4",";"],["5","%"],["6",":"],["7","?"],["8","*"],["9","("],["0",")"],
           ["-","_"],["=","+"],"Backspace","","Tab","Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ъ",["\\","|"],"DEL",
-          "Caps Lock","","Ф","Ы","В","А","П","Р","О","Л","Д","Ж","Э","ENTER","","Shift","","\\","Я","Ч","С","М","И","Т","Ь","Б","Ю",",","^",
+          "Caps Lock","","Ф","Ы","В","А","П","Р","О","Л","Д","Ж","Э","ENTER","","Shift","",`${state.language}`,"Я","Ч","С","М","И","Т","Ь","Б","Ю",",","^",
           "Shift","Ctrl","Win","Alt","","","","","","","","Alt","Ctrl","<","Вниз",">"
         ]
 
@@ -47,7 +47,6 @@ for (let i=0; i<5; i++){
         }
 
         d.body.insertBefore(d.createElement('div'), root);
-        console.log(index);
         d.querySelectorAll('div')[index].style.width = `${width}px`;
         d.querySelectorAll('div')[index].style.height = `${height}px`;
         d.querySelectorAll('div')[index].style.position = 'absolute';
@@ -56,6 +55,8 @@ for (let i=0; i<5; i++){
         d.querySelectorAll('div')[index].style.left = `${(d.documentElement.clientWidth-60*15)/2+60*j}px`;
         d.querySelectorAll('div')[index].style.textAlign = 'center';
         d.querySelectorAll('div')[index].style.cursor = 'pointer';
+        d.querySelectorAll('div')[index].className = `${index}`;
+
         if(state.language == 'en'){
             if(index<13 || index==28){
                 d.querySelectorAll('div')[index].innerHTML=`${en[index][0]}<sup>${en[index][1]}`;
@@ -76,7 +77,6 @@ for (let i=0; i<5; i++){
             }
         }
 
-        
         if(index == 13 || index == 30 || index == 43 || index == 45){
             d.body.insertBefore(d.createElement('div'), root);
             j++;
@@ -89,3 +89,10 @@ for (let i=0; i<5; i++){
         }
     }
 }
+
+for (i=0; i<index; i++){
+    d.querySelectorAll('div')[i].onclick = (e) => {
+        console.log(e.target.className);
+    }
+}
+
