@@ -1,7 +1,7 @@
 let d=document;
 
 let state = {
-    language: 'en',
+    language: 'ru',
     capsLock: false,
     shift: false,
     ctrl: false,
@@ -55,8 +55,27 @@ for (let i=0; i<5; i++){
         d.querySelectorAll('div')[index].style.top = `${(d.documentElement.clientHeight/2 - d.documentElement.clientHeight/2.5 + 60*5)+60*i}px`;
         d.querySelectorAll('div')[index].style.left = `${(d.documentElement.clientWidth-60*15)/2+60*j}px`;
         d.querySelectorAll('div')[index].style.textAlign = 'center';
-        d.querySelectorAll('div')[index].style.verticalAlign = 'middle';
-        d.querySelectorAll('div')[index].innerText=en[index];
+
+        if(state.language == 'en'){
+            if(index<13 || index==28){
+                d.querySelectorAll('div')[index].innerHTML=`${en[index][0]}<sup>${en[index][1]}`;
+                d.querySelectorAll('div')[index].style.lineHeight = '2.5em';
+            } else{
+                d.querySelectorAll('div')[index].innerText=en[index];
+                d.querySelectorAll('div')[index].style.lineHeight = '3em';
+            }
+        }
+
+        if(state.language == 'ru'){
+            if(index>0 && index<13  || index==28){
+                d.querySelectorAll('div')[index].innerHTML=`${ru[index][0]}<sup>${ru[index][1]}`;
+                d.querySelectorAll('div')[index].style.lineHeight = '2.5em';
+            } else{
+                d.querySelectorAll('div')[index].innerText=ru[index];
+                d.querySelectorAll('div')[index].style.lineHeight = '3em';
+            }
+        }
+
         
         if(index == 13 || index == 30 || index == 43 || index == 45){
             d.body.insertBefore(d.createElement('div'), root);
