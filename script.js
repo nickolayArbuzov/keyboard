@@ -22,16 +22,16 @@ textArea.style.left = `${(d.documentElement.clientWidth-61*13)/2}px`;
 
 let en = [
           ["`","~"],["1","!"],["2","@"],["3","#"],["4","$"],["5","%"],["6","^"],["7","&"],["8","*"],["9","("],["0",")"],
-          ["-","_"],["=","+"],"Backspace","Tab","Q","W","E","R","T","Y","U","I","O","P","[","]",["\\","|"],"DEL",
-          "Caps Lock","A","S","D","F","G","H","J","K","L",";","'","ENTER","Shift","Z","X","C","V","B","N","M",",",".","/","^",
-          "Shift","Ctrl","Win","Alt","","Alt","Ctrl","<","",">"
+          ["-","_"],["=","+"],"Backspace","","Tab","Q","W","E","R","T","Y","U","I","O","P","[","]",["\\","|"],"DEL",
+          "Caps Lock","","A","S","D","F","G","H","J","K","L",";","'","ENTER","","Shift","","\\","Z","X","C","V","B","N","M",",",".","/","^",
+          "Shift","Ctrl","Win","Alt","","","","","","","","Alt","Ctrl","<","Down",">"
         ]
           
 let ru = [
           "Ё",["1","!"],["2",'"'],["3","№"],["4",";"],["5","%"],["6",":"],["7","?"],["8","*"],["9","("],["0",")"],
-          ["-","_"],["=","+"],"Backspace","Tab","Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ъ",["\\","|"],"DEL",
-          "Caps Lock","Ф","Ы","В","А","П","Р","О","Л","Д","Ж","Э","ENTER","Shift","Я","Ч","С","М","И","Т","Ь","Б","Ю",",","^",
-          "Shift","Ctrl","Win","Alt","","Alt","Ctrl","<","",">"
+          ["-","_"],["=","+"],"Backspace","","Tab","Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ъ",["\\","|"],"DEL",
+          "Caps Lock","","Ф","Ы","В","А","П","Р","О","Л","Д","Ж","Э","ENTER","","Shift","","\\","Я","Ч","С","М","И","Т","Ь","Б","Ю",",","^",
+          "Shift","Ctrl","Win","Alt","","","","","","","","Alt","Ctrl","<","Вниз",">"
         ]
 
 for (let i=0; i<5; i++){
@@ -39,9 +39,13 @@ for (let i=0; i<5; i++){
         index = j+i*15;
         width = 50;
         height = 50;
-        if(index == 13 || index == 30 || index == 42){
+        if(index == 13 || index == 30 || index == 43 || index == 45){
             width = 110;
         }
+        if(index == 63){
+            width = 410;
+        }
+
         d.body.insertBefore(d.createElement('div'), root);
         console.log(index);
         d.querySelectorAll('div')[index].style.width = `${width}px`;
@@ -52,14 +56,17 @@ for (let i=0; i<5; i++){
         d.querySelectorAll('div')[index].style.left = `${(d.documentElement.clientWidth-60*15)/2+60*j}px`;
         d.querySelectorAll('div')[index].style.textAlign = 'center';
         d.querySelectorAll('div')[index].style.verticalAlign = 'middle';
-        d.querySelectorAll('div')[index].innerText=ru[index];
-
-        if(index == 13 || index == 30 || index == 42){
+        d.querySelectorAll('div')[index].innerText=en[index];
+        
+        if(index == 13 || index == 30 || index == 43 || index == 45){
+            d.body.insertBefore(d.createElement('div'), root);
             j++;
         }
-
-        if(i==0 && j==14 || i==0 && j==14){
-            j=15;
+        if(index == 63){
+            for(let k=0;k<6;k++){
+                d.body.insertBefore(d.createElement('div'), root);
+                j++;
+            }
         }
     }
 }
