@@ -1,12 +1,5 @@
 let d=document;
 
-
-let EN = [];
-d.onkeypress = (e) => {
-    EN.push(e.charCode);
-    console.log(EN);
-}
-
 let state = {
     language: 'en',
     capsLock: false,
