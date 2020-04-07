@@ -1,5 +1,12 @@
 let d=document;
 
+
+let EN = [];
+d.onkeypress = (e) => {
+    EN.push(e.charCode);
+    console.log(EN);
+}
+
 let state = {
     language: 'en',
     capsLock: false,
@@ -89,10 +96,19 @@ for (let i=0; i<5; i++){
         }
     }
 }
-
-for (i=0; i<index; i++){
-    d.querySelectorAll('div')[i].onclick = (e) => {
-        console.log(e.target.className);
+/*
+for (i=0; i<=index; i++){
+    d.querySelectorAll('div')[i].onmousedown = (e) => {
+        textArea.focus();
+        e.target.style.backgroundColor = 'black';
+        e.target.style.color = 'grey';
+        textArea.blur();
     }
-}
+    d.querySelectorAll('div')[i].onmouseup= (e) => {
+        textArea.focus();
+        e.target.style.backgroundColor = 'white';
+        e.target.style.color = 'black';
+        textArea.blur();
+    }
+}*/
 
